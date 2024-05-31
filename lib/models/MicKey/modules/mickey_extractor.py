@@ -14,7 +14,7 @@ class MicKey_Extractor(nn.Module):
         self.dino_downfactor = cfg['DINOV2']['DOWN_FACTOR']
         if dinov2_weights is None:
             # want to load from the kaggle model as there's no internet access
-            dinov2_weights = torch.load("/kaggle/input/omnigluekappa/dinov2_vitb14_pretrain.pth")
+            dinov2_weights = torch.load("/kaggle/input/mickey-utils/dinov2_vitl14_pretrain.pth")
             # dinov2_weights = torch.hub.load_state_dict_from_url("https://dl.fbaipublicfiles.com/dinov2/"
             #                                                     "dinov2_vitl14/dinov2_vitl14_pretrain.pth",
             #                                                     map_location="cpu")
