@@ -95,12 +95,6 @@ def run_demo_inference(args):
     print('Running MicKey relative pose estimation...')
     model(data)
 
-    # Pose, inliers and score are stored in:
-    # data['R'] = R
-    # data['t'] = t
-    # data['inliers'] = inliers
-    # data['inliers_list'] = inliers_list
-
     print('Saving depth and score maps in image directory ...')
     depth0_map = colorize_depth(data['depth0_map'][0], invalid_mask=(data['depth0_map'][0] < 0.001).cpu()[0])
     depth1_map = colorize_depth(data['depth1_map'][0], invalid_mask=(data['depth1_map'][0] < 0.001).cpu()[0])
@@ -116,15 +110,16 @@ def run_demo_inference(args):
     cv2.imwrite(args.im_path_ref.replace(ext_im0, 'depth.jpg'), depth0_map)
     cv2.imwrite(args.im_path_dst.replace(ext_im1, 'depth.jpg'), depth1_map)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--im_path_ref', help='path to reference image', default='data/toy_example/im0.jpg')
     parser.add_argument('--im_path_dst', help='path to destination image', default='data/toy_example/im1.jpg')
     parser.add_argument('--intrinsics', help='path to intrinsics file', default='data/toy_example/intrinsics.txt')
     parser.add_argument('--resize', nargs=2, type=int, help='resize applied to the image and intrinsics (w, h)', default=None)
-    parser.add_argument('--config', help='path to config file', default='weights/mickey_weights/config.yaml')
+    parser.add_argument('--config', help='path to config file', default='weights/config.yaml')
     parser.add_argument('--checkpoint', help='path to model checkpoint',
-                        default='weights/mickey_weights/mickey.ckpt')
+                        default='weights/mickey.ckpt')
     args = parser.parse_args()
 
     run_demo_inference(args)

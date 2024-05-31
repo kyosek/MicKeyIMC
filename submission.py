@@ -95,6 +95,7 @@ def eval(args):
     args.output_root.mkdir(parents=True, exist_ok=True)
     save_submission(results_dict, args.output_root / 'submission.zip')
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', help='path to config file')
