@@ -11,13 +11,13 @@ class e2eProbabilisticProcrustesSolver():
     def __init__(self, cfg):
 
         # Populate Procrustes RANSAC parameters
-        self.it_RANSAC = cfg.PROCRUSTES.IT_RANSAC
-        self.it_matches = cfg.PROCRUSTES.IT_MATCHES
-        self.num_samples_matches = cfg.PROCRUSTES.NUM_SAMPLED_MATCHES
-        self.num_corr_3d_3d = cfg.PROCRUSTES.NUM_CORR_3D_3D
-        self.num_refinements = cfg.PROCRUSTES.NUM_REFINEMENTS
-        self.th_inlier = cfg.PROCRUSTES.TH_INLIER
-        self.th_soft_inlier = cfg.PROCRUSTES.TH_SOFT_INLIER
+        self.it_RANSAC = cfg["PROCRUSTES"]["IT_RANSAC"]
+        self.it_matches = cfg["PROCRUSTES"]["IT_MATCHES"]
+        self.num_samples_matches = cfg["PROCRUSTES"]["NUM_SAMPLED_MATCHES"]
+        self.num_corr_3d_3d = cfg["PROCRUSTES"]["NUM_CORR_3D_3D"]
+        self.num_refinements = cfg["PROCRUSTES"]["NUM_REFINEMENTS"]
+        self.th_inlier = cfg["PROCRUSTES"]["TH_INLIER"]
+        self.th_soft_inlier = cfg["PROCRUSTES"]["TH_SOFT_INLIER"]
 
     def estimate_pose(self, batch, return_inliers=False):
         '''
