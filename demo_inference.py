@@ -46,6 +46,7 @@ def read_color_image(path, resize):
 
     return image.unsqueeze(0)
 
+
 def read_intrinsics(path_intrinsics, resize):
     Ks = {}
     with Path(path_intrinsics).open('r') as f:
@@ -62,6 +63,7 @@ def read_intrinsics(path_intrinsics, resize):
                 K = correct_intrinsic_scale(K, resize[0] / W, resize[1] / H).numpy()
             Ks[img_name] = K
     return Ks
+
 
 def run_demo_inference(args):
 
